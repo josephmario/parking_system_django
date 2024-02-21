@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Lot</title>
+</head>
+<body>
+    <h1>Parking Lot</h1>
+    <form method="post" action="{% url 'entry_vehicle' spot.id%}">
+        {% csrf_token %}
+        <label for="type">Size Number:</label>
+        <select name="type" id="type">
+            <option value="1">Small</option>
+            <option value="2">Medium</option>
+            <option value="3">Large</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

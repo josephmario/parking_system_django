@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Lot</title>
+</head>
+<body>
+    <h1>Parking Lot Payment</h1>
+    
+    <ul>
+        <li>Spot Number:{{ spot.spot_number }}</li>
+        {% if spot.slot_number == 1 %}
+            <li>Slot A</li>
+        {% elif spot.slot_number == 2 %}
+            <li>Slot B</li>
+        {% elif spot.slot_number == 3 %}
+            <li>Slot C</li>
+        {% endif %}
+        {% if spot.Type_number == 1 %}
+            <li>Price:20</li>
+        {% elif spot.Type_number == 2 %}
+            <li>Price:60</li>
+        {% elif spot.Type_number == 3 %}
+            <li>Price:100</li>
+        {% endif %} 
+        <li>Plate Number:{{ spot.car.license_plate }}</li>
+        <li>Enter Park:{{ spot.created }}</li>
+        <li>Total Hrs: {{ total_hrs }}
+        <li>Total Price:{{ total_price }}</li>
+        <form method="post" action="{% url 'verify_payment' spot.id %}">
+            {% csrf_token %}
+            <label for="payment">Payment:</label>
+            <input type="text" id="payment" name="payment" value="{{ request.POST.payment }}">
+            <button type="submit">Submit</button>
+        </form>
+    </ul>
+</body>
+</html>

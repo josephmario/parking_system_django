@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Lot</title>
+</head>
+<body>
+    <h1>Parking Lot</h1>
+    <ul>
+        {% for spot in spots %}
+            {% if spot.slot_number == 1 %}
+                <span>Slot A</span>
+                <li>
+                    Spot {{ spot.spot_number }} - {% if spot.is_occupied %}Occupied{% else %}Empty{% endif %}
+                    {% if spot.is_occupied %}
+                        - {{ spot.car.license_plate }} - {{ spot.car.entry_time }}
+                        <a href="{% url 'exit_car' spot.id %}">Exit</a>
+                    {% else %}
+                        <a href="{% url 'enter_car' spot.id %}">Enter</a>
+                    {% endif %}
+                </li>
+            {% endif %} 
+        {% endfor %}
+    </ul>
+    <br>
+    <ul>
+        {% for spot in spots %}
+            {% if spot.slot_number == 2 %}
+                <span>Slot B</span>
+                <li>
+                    Spot {{ spot.spot_number }} - {% if spot.is_occupied %}Occupied{% else %}Empty{% endif %}
+                    {% if spot.is_occupied %}
+                        - {{ spot.car.license_plate }} - {{ spot.car.entry_time }}
+                        <a href="{% url 'exit_car' spot.id %}">Exit</a>
+                    {% else %}
+                        <a href="{% url 'enter_car' spot.id %}">Enter</a>
+                    {% endif %}
+                </li>
+            {% endif %} 
+        {% endfor %}
+    </ul>
+    <br>
+    <ul>
+        {% for spot in spots %}
+            {% if spot.slot_number == 3 %}
+                <span>Slot C</span>
+                <li>
+                    Spot {{ spot.spot_number }} - {% if spot.is_occupied %}Occupied{% else %}Empty{% endif %}
+                    {% if spot.is_occupied %}
+                        - {{ spot.car.license_plate }} - {{ spot.car.entry_time }}
+                        <a href="{% url 'exit_car' spot.id %}">Exit</a>
+                    {% else %}
+                        <a href="{% url 'enter_car' spot.id %}">Enter</a>
+                    {% endif %}
+                </li>
+            {% endif %} 
+        {% endfor %}
+    </ul>
+</body>
+</html>
